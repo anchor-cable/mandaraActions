@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>mandaraactions</title>
   </head>
   <body>
     <div id="app"></div>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAb9lC6FQpaUi8V8nN-S7D5Qoc4ARS72LM",
+        authDomain: "mandala-actions.firebaseapp.com",
+        databaseURL: "https://mandala-actions.firebaseio.com",
+        projectId: "mandala-actions",
+        storageBucket: "mandala-actions.appspot.com",
+        messagingSenderId: "773108693173"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script src="/dist/build.js"></script>
   </body>
 </html>
