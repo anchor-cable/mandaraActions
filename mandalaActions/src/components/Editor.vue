@@ -15,9 +15,9 @@
           <p class="memoTitle">{{ displayTitle(memo.inputbox) }}</p>
         </div>
         <div>
-          <button class="addMemoBtn" @click="addMemo">メモの追加</button>
-          <button class="deleteMemoBtn" v-if="memos.length >1" @click="deleteMemo">選択中メモの削除</button>
-          <button class="saveMemoBtn" @click="saveMemos">メモの保存</button>
+          <button class="addMemoBtn Btn" @click="addMemo">メモの追加</button>
+          <button class="deleteMemoBtn Btn" v-if="memos.length >1" @click="deleteMemo">選択中メモの削除</button>
+          <button class="saveMemoBtn Btn" @click="saveMemos">メモの保存</button>
         </div>
       </div>
       <textarea class="inputbox" v-model="memos[selectedIndex].inputbox"></textarea>
@@ -115,7 +115,7 @@ export default {
     background-color: #ccf;
   }
 }
-.deleteMemo {
+.Btn {
   margin: 10px;
 }
 .inputbox {

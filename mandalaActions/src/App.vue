@@ -1,36 +1,38 @@
- <template>
-  <div id="app">
-    <Home v-if="!isLogin"></Home>
-    <Editor v-if="isLogin" :user="userData"></Editor>
-  </div>
+<template>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Vuetify</span>
+        <span class="font-weight-light">MATERIAL DESIGN</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        flat
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+      >
+        <span class="mr-2">Latest Release</span>
+      </v-btn>
+    </v-toolbar>
+
+    <v-content>
+      <HelloWorld/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import Home from "./components/Home.vue";
-import Editor from "./components/Editor.vue";
+import HelloWorld from './components/HelloWorld'
+
 export default {
-  name: "app",
-  data() {
-    return {
-      isLogin: false,
-      userData: null
-    };
-  },
+  name: 'App',
   components: {
-    Home: Home,
-    Editor: Editor
+    HelloWorld
   },
-  created: function() {
-    firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
-      if (user) {
-        this.isLogin = true;
-        this.userData = user;
-      } else {
-        this.isLogin = false;
-        this.userData = null;
-      }
-    });
+  data () {
+    return {
+      //
+    }
   }
-};
+}
 </script>
