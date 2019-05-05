@@ -17,7 +17,7 @@
         <div>
           <button class="addMemoBtn" @click="addMemo">メモの追加</button>
           <button class="deleteMemoBtn" v-if="memos.length >1" @click="deleteMemo">選択中メモの削除</button>
-          <button class="saveMemoBtn" @click="saveMemo">メモの保存</button>
+          <button class="saveMemoBtn" @click="saveMemos">メモの保存</button>
         </div>
       </div>
       <textarea class="inputbox" v-model="memos[selectedIndex].inputbox"></textarea>
@@ -51,6 +51,17 @@ export default {
         }
       });
   },
+  mounted: function() {
+    document.onkeydown = e => {
+      if ((e.key == "s" && e.metaKey) || e.ctrlKey) {
+        this.saveMemos();
+        return false;
+      }
+    };
+  },
+  beforedestory: function() {
+    document.onkeydown = null;
+  },
   methods: {
     googleLogout: function() {
       firebase.auth().signOut();
@@ -66,7 +77,7 @@ export default {
         this.selectedIndex--;
       }
     },
-    saveMemo: function() {
+    saveMemos: function() {
       firebase
         .database()
         .ref("memos/" + this.user.uid)
